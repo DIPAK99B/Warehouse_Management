@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search_material">
+
+    <Button
+        android:id="@+id/QRscan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan Material" />
+
+    <EditText
+        android:layout_below="@+id/QRscan"
+        android:id="@+id/searchbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Material No :"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search"
+        android:layout_below="@+id/searchbox"/>
+
+    <ScrollView
+        android:layout_below="@+id/btnsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_below="@+id/btnsearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="STOCK INFORMATION"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            android:textStyle="bold|italic"/>
+
+        <!-- Material No -->
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Material No"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Material No information :"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <!-- Description -->
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description Will be here :"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <!-- Qty -->
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quantity"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvqty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quantity Will be here :"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <!-- Supplier -->
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Supplier"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvsupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Supplier Info Will be here :"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+        <!-- Sloc -->
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Store Location"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/tvsloc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Store Location Info Will be here :"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            />
+
+    </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+</RelativeLayout>

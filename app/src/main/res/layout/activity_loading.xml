@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loading">
+
+    <Button
+        android:id="@+id/QRscan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan Material" />
+
+    <EditText
+        android:layout_below="@id/QRscan"
+        android:id="@+id/et11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="48dp"
+        android:hint="@string/material_no"
+        android:textStyle="bold"
+        android:layout_marginBottom="40px"
+        />
+
+    <Button
+        android:layout_below="@id/et11"
+        android:id="@+id/QRscan2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan Loading QR code" />
+
+    <EditText
+        android:id="@+id/et22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/QRscan2"
+        android:layout_marginBottom="40px"
+        android:height="48dp"
+        android:hint="Loading Location Code:"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:id="@+id/btnclear"
+            android:layout_margin="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnok"
+            android:layout_margin="10px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
