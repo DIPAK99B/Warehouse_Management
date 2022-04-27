@@ -3,6 +3,7 @@ package com.example.warehouse;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,19 +13,6 @@ import android.widget.Button;
 public class reports extends AppCompatActivity {
     Button stocks,loaded;
 
-
-    public void stock() {
-        Intent i;
-        i = new Intent(this,stock_list.class);
-        startActivity(i);
-    }
-
-    public void load(){
-        Intent i;
-        i = new Intent(this,loading_list.class);
-        startActivity(i);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +21,16 @@ public class reports extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Reports Section");
 
+        Context context = getApplicationContext();
+
 
         stocks = (Button) findViewById(R.id.stocks);
         stocks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stock();
+                Intent i;
+                i = new Intent(context,stock_list.class);
+                startActivity(i);
             }
         });
 
@@ -47,7 +39,9 @@ public class reports extends AppCompatActivity {
         loaded.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                load();
+                Intent i;
+                i = new Intent(context,loading_list.class);
+                startActivity(i);
             }
         });
     }
