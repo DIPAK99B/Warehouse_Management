@@ -45,8 +45,8 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
         holder.no.setText(no1.get(position));
         holder.sloc.setText(sloc1.get(position));
         holder.tloc.setText(tloc1.get(position));
-        holder.slocname.setText("Sloc");
-        holder.tlocname.setText("Tloc");
+        holder.slocname.setText("Sloc :");
+        holder.tlocname.setText("Tloc :");
     }
 
     @Override
