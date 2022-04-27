@@ -22,21 +22,21 @@ import java.util.List;
 
 public class loading_list extends AppCompatActivity {
     RecyclerView recyclerView;
-    RecyclerAdapter recyclerAdapter;
+    RecyclerLoadingAdapter recyclerAdapter1;
 
     //List<String> moviesList;
-    List<String> no,tloc,sloc;
+    List<String> no3,sloc3,tloc3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stock_list);
+        setContentView(R.layout.activity_loading_list);
 
         //moviesList = new ArrayList<>();
 
-        no = new ArrayList<>();
-        tloc = new ArrayList<>();
-        sloc = new ArrayList<>();
+        no3 = new ArrayList<>();
+        sloc3 = new ArrayList<>();
+        tloc3 = new ArrayList<>();
 
         Context context = getApplicationContext();
 
@@ -54,18 +54,18 @@ public class loading_list extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
-                    no.add(String.valueOf(dataSnapshot1.child("materialNO").getValue()));
-                    tloc.add(String.valueOf(dataSnapshot1.child("tloc").getValue()));
-                    sloc.add(String.valueOf(dataSnapshot1.child("sloc").getValue()));
+                    no3.add(String.valueOf(dataSnapshot1.child("materialNO").getValue()));
+                    sloc3.add(String.valueOf(dataSnapshot1.child("sloc").getValue()));
+                    tloc3.add(String.valueOf(dataSnapshot1.child("tloc").getValue()));
                 }
 
                 recyclerView = findViewById(R.id.recyclerView2);
                 //recyclerAdapter = new RecyclerAdapter(moviesList);
-                recyclerAdapter = new RecyclerAdapter(no,tloc,sloc);
+                recyclerAdapter1 = new RecyclerLoadingAdapter(no3,sloc3,tloc3);
 
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                recyclerView.setAdapter(recyclerAdapter);
+                recyclerView.setAdapter(recyclerAdapter1);
 
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);

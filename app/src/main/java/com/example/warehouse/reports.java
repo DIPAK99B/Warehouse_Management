@@ -10,12 +10,18 @@ import android.widget.Button;
 
 
 public class reports extends AppCompatActivity {
-    Button stocks;
+    Button stocks,loaded;
 
 
     public void stock() {
         Intent i;
         i = new Intent(this,stock_list.class);
+        startActivity(i);
+    }
+
+    public void load(){
+        Intent i;
+        i = new Intent(this,loading_list.class);
         startActivity(i);
     }
 
@@ -33,6 +39,15 @@ public class reports extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 stock();
+            }
+        });
+
+
+        loaded = (Button) findViewById(R.id.loaded);
+        loaded.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                load();
             }
         });
     }
