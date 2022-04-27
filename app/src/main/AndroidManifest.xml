@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse">
         <activity
+            android:name=".loading_list"
+            android:exported="false" />
+        <activity
             android:name=".stock_list"
             android:exported="false" />
         <activity
