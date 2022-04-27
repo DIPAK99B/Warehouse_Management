@@ -12,35 +12,32 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder>{
+public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoadingAdapter.myHolder>{
 
-    List<String> no1,qty1,sloc1;
+    List<String> no1,sloc1,tloc1;
 
-
-    public RecyclerAdapter(List<String> no1, List<String> qty1, List<String> sloc1) {
+    public RecyclerLoadingAdapter(List<String> no1, List<String> sloc1, List<String> tloc1) {
         this.no1 = no1;
-        this.qty1 = qty1;
         this.sloc1 = sloc1;
+        this.tloc1 = tloc1;
     }
-
-
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public myHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.row_item,parent,false);
-        ViewHolder viewHolder = new ViewHolder(view);
+        RecyclerLoadingAdapter.myHolder viewHolder = new RecyclerLoadingAdapter.myHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.sloc.setText(String.valueOf(position));
+    public void onBindViewHolder(@NonNull myHolder holder, int position) {
         holder.no.setText(no1.get(position));
-        holder.qty.setText(qty1.get(position));
         holder.sloc.setText(sloc1.get(position));
+        holder.tloc.setText(tloc1.get(position));
+        holder.slocname.setText("Sloc");
+        holder.tlocname.setText("Tloc");
     }
 
     @Override
@@ -48,18 +45,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return no1.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class myHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+        TextView no,sloc,tloc,slocname,tlocname;
 
-        TextView no,qty,sloc;
-
-
-        public ViewHolder(@NonNull View itemView) {
+        public myHolder(@NonNull View itemView) {
             super(itemView);
 
             no = itemView.findViewById(R.id.cardno);
-            qty = itemView.findViewById(R.id.cardqty);
-            sloc = itemView.findViewById(R.id.cardsloc);
+            sloc = itemView.findViewById(R.id.cardqty);
+            tloc = itemView.findViewById(R.id.cardsloc);
+            slocname = itemView.findViewById(R.id.valueof2);
+            tlocname = itemView.findViewById(R.id.valueof3);
 
             itemView.setOnClickListener(this);
 
@@ -78,7 +75,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         @Override
         public void onClick(View view) {
             Toast.makeText(view.getContext(),no1.get(getAbsoluteAdapterPosition()), Toast.LENGTH_SHORT).show();
-
         }
     }
 }
