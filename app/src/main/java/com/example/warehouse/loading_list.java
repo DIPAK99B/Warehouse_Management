@@ -79,7 +79,7 @@ public class loading_list extends AppCompatActivity {
                     @Override
                     public void onRefresh() {
                         finish();
-                        Intent i = new Intent(context,stock_list.class);
+                        Intent i = new Intent(context,loading_list.class);
                         swipeRefreshLayout2.setRefreshing(false);
                         startActivity(i);
                     }
