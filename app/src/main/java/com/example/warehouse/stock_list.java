@@ -80,7 +80,6 @@ public class stock_list extends AppCompatActivity {
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);
 
-
                 swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
                 swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                     @Override

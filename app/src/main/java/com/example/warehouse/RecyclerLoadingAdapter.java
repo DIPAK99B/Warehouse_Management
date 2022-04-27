@@ -57,7 +57,7 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
     class myHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView no,sloc,tloc,slocname,tlocname;
-        Context context = no.getContext();
+        //Context context = no.getContext();
 
         public void RemoveItem(String key){
             FirebaseDatabase database = FirebaseDatabase.getInstance();
