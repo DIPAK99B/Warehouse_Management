@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 
 public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoadingAdapter.myHolder>{
@@ -49,6 +52,12 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
 
         TextView no,sloc,tloc,slocname,tlocname;
 
+        public void RemoveItem(String key){
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference reference =  database.getReference().child("loading").child(key);
+            reference.removeValue();
+        }
+
         public myHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -59,13 +68,16 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
             tlocname = itemView.findViewById(R.id.valueof3);
 
             itemView.setOnClickListener(this);
+            final String[] key = new String[1];
 
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+                    key[0] = no1.get(getAbsoluteAdapterPosition());
                     no1.remove(getAbsoluteAdapterPosition());
                     notifyItemRemoved(getAbsoluteAdapterPosition());
+                    RemoveItem(key[0]);
                     return true;
                 }
             });
