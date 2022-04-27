@@ -92,7 +92,6 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
                                     no1.remove(getAbsoluteAdapterPosition());
                                     notifyItemRemoved(getAbsoluteAdapterPosition());
                                     RemoveItem(key[0]);
-                                    no1 = null;
                                 }
                             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override

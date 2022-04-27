@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -59,6 +61,8 @@ public class loading_list extends AppCompatActivity {
                     tloc3.add(String.valueOf(dataSnapshot1.child("tloc").getValue()));
                 }
 
+                SwipeRefreshLayout swipeRefreshLayout2;
+
                 recyclerView = findViewById(R.id.recyclerView2);
                 //recyclerAdapter = new RecyclerAdapter(moviesList);
                 recyclerAdapter1 = new RecyclerLoadingAdapter(no3,sloc3,tloc3);
@@ -69,6 +73,17 @@ public class loading_list extends AppCompatActivity {
 
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);
+
+                swipeRefreshLayout2 = findViewById(R.id.swipeRefreshLayout2);
+                swipeRefreshLayout2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        finish();
+                        Intent i = new Intent(context,stock_list.class);
+                        swipeRefreshLayout2.setRefreshing(false);
+                        startActivity(i);
+                    }
+                });
             }
 
             @Override

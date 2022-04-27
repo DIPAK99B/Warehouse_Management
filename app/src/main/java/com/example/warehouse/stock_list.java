@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,10 +32,13 @@ public class stock_list extends AppCompatActivity {
     //List<String> moviesList;
     List<String> no,qty,sloc;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_list);
+
 
         //moviesList = new ArrayList<>();
 
@@ -62,6 +67,8 @@ public class stock_list extends AppCompatActivity {
                     sloc.add(String.valueOf(dataSnapshot1.child("sloc").getValue()));
                 }
 
+                SwipeRefreshLayout swipeRefreshLayout;
+
                 recyclerView = findViewById(R.id.recyclerView);
                 //recyclerAdapter = new RecyclerAdapter(moviesList);
                 recyclerAdapter = new RecyclerAdapter(no,qty,sloc);
@@ -72,6 +79,18 @@ public class stock_list extends AppCompatActivity {
 
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);
+
+
+                swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+                swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        finish();
+                        Intent i = new Intent(context,stock_list.class);
+                        swipeRefreshLayout.setRefreshing(false);
+                        startActivity(i);
+                    }
+                });
             }
 
             @Override
@@ -84,19 +103,9 @@ public class stock_list extends AppCompatActivity {
         });
 
 
+        //refresh the list
 
 
 
-
-        /*
-        moviesList.add("Iron man");
-        moviesList.add("Iron man2");
-        moviesList.add("Iron man3");
-        moviesList.add("Iron man4");
-        moviesList.add("Iron man5");
-        moviesList.add("Iron man6");
-        moviesList.add("Iron man7");
-        moviesList.add("Iron man8");
-         */
     }
 }

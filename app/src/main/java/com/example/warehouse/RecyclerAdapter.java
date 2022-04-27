@@ -87,9 +87,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     key[0] = no1.get(getAbsoluteAdapterPosition());
                                     no1.remove(getAbsoluteAdapterPosition());
+                                    qty1.remove(getAbsoluteAdapterPosition());
+                                    sloc1.remove(getAbsoluteAdapterPosition());
                                     notifyItemRemoved(getAbsoluteAdapterPosition());
                                     RemoveItem(key[0]);
-                                    no1 = null;
                                 }
                             }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                         @Override
@@ -97,13 +98,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                             dialogInterface.dismiss();
                         }
                     }).show();
-
-
-
                     return true;
                 }
             });
-
         }
 
         @Override
