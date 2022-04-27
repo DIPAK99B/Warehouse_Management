@@ -1,12 +1,17 @@
 package com.example.warehouse;
 
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +23,7 @@ import java.util.List;
 public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoadingAdapter.myHolder>{
 
     List<String> no1,sloc1,tloc1;
+
 
     public RecyclerLoadingAdapter(List<String> no1, List<String> sloc1, List<String> tloc1) {
         this.no1 = no1;
@@ -51,6 +57,7 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
     class myHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView no,sloc,tloc,slocname,tlocname;
+        Context context = no.getContext();
 
         public void RemoveItem(String key){
             FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -74,10 +81,26 @@ public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoading
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    key[0] = no1.get(getAbsoluteAdapterPosition());
-                    no1.remove(getAbsoluteAdapterPosition());
-                    notifyItemRemoved(getAbsoluteAdapterPosition());
-                    RemoveItem(key[0]);
+
+                    new AlertDialog.Builder(view.getContext()).setIcon(R.drawable.ic_baseline_warning_24)
+                            .setTitle("Delete Record")
+                            .setMessage("Do you want to delete this record?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    key[0] = no1.get(getAbsoluteAdapterPosition());
+                                    no1.remove(getAbsoluteAdapterPosition());
+                                    notifyItemRemoved(getAbsoluteAdapterPosition());
+                                    RemoveItem(key[0]);
+                                    no1 = null;
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).show();
+
                     return true;
                 }
             });
