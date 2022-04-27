@@ -1,6 +1,9 @@
 package com.example.warehouse;
 
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +56,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-
         TextView no,qty,sloc;
 
         public void RemoveItem(String key){
@@ -77,10 +79,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    key[0] = no1.get(getAbsoluteAdapterPosition());
-                    no1.remove(getAbsoluteAdapterPosition());
-                    notifyItemRemoved(getAbsoluteAdapterPosition());
-                    RemoveItem(key[0]);
+                    new AlertDialog.Builder(view.getContext()).setIcon(R.drawable.ic_baseline_warning_24)
+                            .setTitle("Delete Record")
+                            .setMessage("Do you want to delete this record?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    key[0] = no1.get(getAbsoluteAdapterPosition());
+                                    no1.remove(getAbsoluteAdapterPosition());
+                                    notifyItemRemoved(getAbsoluteAdapterPosition());
+                                    RemoveItem(key[0]);
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).show();
+
+
+
                     return true;
                 }
             });
