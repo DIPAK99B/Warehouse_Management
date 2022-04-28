@@ -74,10 +74,6 @@ public class loading_list extends AppCompatActivity {
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(context,DividerItemDecoration.VERTICAL);
                 recyclerView.addItemDecoration(dividerItemDecoration);
 
-                Toast.makeText(getApplicationContext(),
-                        "Problem can be here",
-                        Toast.LENGTH_LONG)
-                        .show();
 
                 swipeRefreshLayout2 = findViewById(R.id.swipeRefreshLayout2);
                 swipeRefreshLayout2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

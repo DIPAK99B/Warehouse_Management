@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoadingAdapter.myHolder>{
+class RecyclerLoadingAdapter extends RecyclerView.Adapter<RecyclerLoadingAdapter.myHolder>{
 
     List<String> no1,sloc1,tloc1;
 
